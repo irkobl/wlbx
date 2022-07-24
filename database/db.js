@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize('wlbx', 'user_wlbx', '#EDC3edc', {
     host: '185.219.43.43',
@@ -15,4 +16,9 @@ const start = async () => {
     }
 };
 
-start();
+//start();
+
+module.exports = {
+    start: start(),
+    DataTypes: DataTypes
+};
