@@ -1,7 +1,24 @@
-const sequelize1= require ('sequelize');
-const sequelize = require ('../db');
 
-console.log(sequelize.DataTypes);
-console.log(sequelize.start);
+//const wlbx = require('../connectDB');
 
-//console.log(sequelize1);
+const user = wlbx.connectDB.define('users', {
+        
+    login: {
+        type: wlbx.DataTypes.STRING,
+        allowNull: false
+    },
+    
+    password: {
+        type: wlbx.DataTypes.STRING,
+        allowNull: false        
+    },
+    createdAt: wlbx.DataTypes.DATE,
+    updatedAt: wlbx.DataTypes.DATE
+    }, {
+        
+        paranoid: true
+    }
+);
+
+module.exports = user;
+
