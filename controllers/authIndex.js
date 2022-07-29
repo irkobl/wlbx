@@ -1,6 +1,6 @@
 
 exports.index = (req, res, next) => {
-    res.render('index', { title: 'Express' });
+    res.render('index', { title: 'Auth' });
 };
 
 exports.auth = (req, res) => {

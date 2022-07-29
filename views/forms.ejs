@@ -8,20 +8,23 @@
     <div class="container">      
       <div class="row justify-content-center" style="margin-top: 20px;">
         <div class="col-6">
-            <form>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Textarea</Textarea></label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="formFile" class="form-label"></label>
-                    <input class="form-control" type="file" id="formFile">
-                </div>
-            </form> 
+          <form method = "post" action="/forms">
+            <div class="mb-3">
+                <label for="input" class="form-label">Enter any text</label>
+                <input type="text" class="form-control" id="input" placeholder="input text" name="input">
+            </div>
+            <div class="mb-3">
+                <label for="textarea" class="form-label">Textarea</Textarea></label>
+                <textarea class="form-control" id="textarea" rows="3" name="text"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="file" class="form-label"></label>
+                <input class="form-control" type="file" id="file" name="file">
+            </div>
+            <div class="float-end">
+              <button type="submit" class="btn btn-primary">Загрузить</button>
+            </div>
+          </form> 
         </div>       
       </div>      
     </div>    
