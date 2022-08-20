@@ -1,5 +1,4 @@
-
-//const wlbx = require('../connectDB');
+const wlbx = require('../connectDB');
 
 const user = wlbx.connectDB.define('users', {
         
@@ -16,7 +15,8 @@ const user = wlbx.connectDB.define('users', {
     updatedAt: wlbx.DataTypes.DATE
     }, {
         
-        paranoid: true
+        paranoid: true,
+        //tableName: 'users' параметр явно указывае название таблицы в mySQL
     }
 );
 

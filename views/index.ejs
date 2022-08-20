@@ -7,15 +7,15 @@
   <body>
     <div class="container">
       
-      <div class="row justify-content-end" >
+      <div class="row justify-content-end mt-3" >
         <div class="col-2">          
-          <a href="register" class="link-primary">Регистрация</a>
+          <a href="register" class="link-primary">Registration</a>
         </div>          
-      </div>      
+      </div>       
             
       <div class="row justify-content-center" style="margin-top: 20px;">
         <div class="col-6">
-          <h3>Форма для авторизации</h3>
+          <h3>Authorization form</h3>
           <form method="post" action="/">
             <div class="mb-3">
               <label for="inputLogin" class="form-label">Login</label>
@@ -25,9 +25,12 @@
             <div class="mb-3">
               <label for="inputPassword" class="form-label">Password</label>
               <input type="password" class="form-control" id="inputPassword" name="password">
+              <div id="userRegistered" class="form-text <%= typeof textDanger != 'undefined' ? textDanger : '' %>">
+                <%= typeof msgString != 'undefined' ? msgString : ''%>
+              </div>
             </div>            
             <div class="float-end">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Log in</button>
             </div>            
           </form>
         </div>       

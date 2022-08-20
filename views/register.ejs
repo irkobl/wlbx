@@ -6,16 +6,10 @@
   </head> 
   <body>
     <div class="container">
-      
-      <div class="row justify-content-end" >
-        <div class="col-2">          
-          <a href="register" class="link-primary">Регистрация</a>
-        </div>          
-      </div>      
             
-      <div class="row justify-content-center" style="margin-top: 20px;">
+      <div class="row justify-content-center mt-4">
         <div class="col-6">
-          <h3>Форма для регистрации</h3>
+          <h3>Registration form</h3>
           <form method="post" action="register">
             <div class="mb-3">
               <label for="inputLogin" class="form-label">Login</label>
@@ -25,9 +19,14 @@
             <div class="mb-3">
               <label for="inputPassword" class="form-label">Password</label>
               <input type="password" class="form-control" id="inputPassword" name="password">
-            </div>            
+
+              <div id="passwordnHelp" class="form-text <%= typeof textDanger != 'undefined' ? textDanger : '' %>">
+                <%= typeof errValid != 'undefined' ? errValid : 'Enter a password of at least 5 characters.'%>
+              </div>
+                            
+            </div>                       
             <div class="float-end">
-              <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+              <button type="submit" class="btn btn-primary">Register</button>
             </div>            
           </form>
         </div>       

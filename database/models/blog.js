@@ -1,4 +1,4 @@
-//const wlbx = require('../connectDB');
+const wlbx = require('../connectDB');
 
 const blog = wlbx.connectDB.define('blogs', {
         
@@ -17,8 +17,8 @@ const blog = wlbx.connectDB.define('blogs', {
         allowNull: false        
     },
 
-    createdAt: wlbx.connectDB.DATE,
-    updatedAt: wlbx.connectDB.DATE
+    createdAt: wlbx.DataTypes.DATE,
+    updatedAt: wlbx.DataTypes.DATE
     }, {    
         paranoid: true
     }
