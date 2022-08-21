@@ -25,7 +25,6 @@ connectDB.authenticate().then(() => {
     console.error('Unable to connect to the database: ', error);
 });
 
-
 // connectDB.sync().then(() => {  //{ force: true }
 //     console.log("Drop and re-sync db.");  
 // });
