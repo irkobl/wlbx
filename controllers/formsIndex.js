@@ -3,7 +3,7 @@ const connectDB = require ('../database/models/');
 const objForm = Object.create (
     {}, 
     {
-        
+
     }
 );
 
@@ -16,15 +16,15 @@ exports.blog = async (res, req, next) => {
     let obj = {...res.files};
     let fileName
     if (Object.keys(obj).length !== 0) {
-        obj.file.mv(`/var/www/wlbx/public/uploads/${obj.file.name}`, (err) => {
+        obj.file.mv(`/app/public/uploads/${obj.file.name}`, (err) => {
             if (err) {
-                return req.status(500).json({message: 'File is not downloaded'});
+                return req.status(500).json({message: `File is not downloaded ${error}`});
             }
         });
     }
     
     
-    await connectDB.blog.create({name: input, message: text, media: `/var/www/wlbx/public/uploads/${obj.file.name}`, userID: res.user.id, });
+    await connectDB.blog.create({name: input, message: text, media: `/app/public/uploads/${obj.file.name}`, userID: res.user.id, });
 
     return req.render('forms', {title: 'Forms', test: 'test', login: res.user.login});    
 };
