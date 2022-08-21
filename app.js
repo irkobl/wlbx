@@ -2,8 +2,6 @@ const fileUpload = require ('express-fileupload');
 const createError = require ('http-errors');
 const express = require ('express');
 const path = require ('path');
-const db = require ("./database/models");
-
 
 const indexRouter = require('./routes/index');
 const formsRouter = require('./routes/forms');
@@ -19,10 +17,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload());
 
 app.use('/', indexRouter, formsRouter, registerRouter);
-
-db.connectDB.sync().then(() => {  //{ force: true }
-  console.log("Drop and re-sync db.");  
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
