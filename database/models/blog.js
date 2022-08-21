@@ -2,6 +2,11 @@ const wlbx = require('../connectDB');
 
 const blog = wlbx.connectDB.define('blogs', {
         
+    name: {
+        type: wlbx.DataTypes.STRING,
+        allowNull: false        
+    },
+
     message: {
         type: wlbx.DataTypes.TEXT,
         allowNull: false
@@ -10,12 +15,7 @@ const blog = wlbx.connectDB.define('blogs', {
     media: {
         type: wlbx.DataTypes.STRING,
         allowNull: false        
-    },
-
-    user: {
-        type: wlbx.DataTypes.STRING,
-        allowNull: false        
-    },
+    },    
 
     createdAt: wlbx.DataTypes.DATE,
     updatedAt: wlbx.DataTypes.DATE

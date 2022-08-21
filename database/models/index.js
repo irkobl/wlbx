@@ -13,7 +13,5 @@ db.blog = require("./blog.js");
 db.user.hasMany(db.blog, {foreignKey: 'userID', as: 'blogs'});
 db.blog.belongsTo(db.user, {foreignKey: 'userID', as: 'users'});
 
-// db.user.hasMany(db.blog, { foreignKey: 'userID' });
-// db.blog.belongsTo(db.user, { foreignKey: 'userI'});
 
 module.exports = db;
