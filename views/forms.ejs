@@ -1,45 +1,83 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title><%= title %></title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/bootstrap.min.js"></script>    
     
     <!--Тестовая передача переменной в js ejs-->
-    <script type = "text/javascript">
-      var tt = '<%- test %>';
-      console.log(JSON.parse(tt));
+    <script type = "text/javascript">      
+      var blogs = '<%- blogs %>'
+      var blogsObj = JSON.parse(blogs);
+      console.log(blogsObj); 
     </script>
     <!----------------------------------------->
-  
   </head> 
   <body>
     <div class="container">
       <div class="row justify-content-end mt-3" >
-        <div class="col-2">          
-          <p class="text-info text-center">User: <%= login %></p>
+          <div class="col-2">          
+          <p class="text-success text-center">User: <%= login %></p>
         </div>          
-      </div>      
-      <div class="row justify-content-center" style="margin-top: 20px;">
-        <div class="col-6">
-          <form ref='uploadForm' id='uploadForm' method = "post" action="/forms" encType="multipart/form-data">
-            <div class="mb-3">
-                <label for="input" class="form-label">Name blog</label>
-                <input type="text" class="form-control" id="input" placeholder="input text" name="input">
-            </div>
-            <div class="mb-3">
-                <label for="textarea" class="form-label">Text for blog</Textarea></label>
-                <textarea class="form-control" id="textarea" rows="3" name="text"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="file" class="form-label"></label>
-                <input class="form-control" type="file" id="file" name="file">
-            </div>
-            <div class="float-end">
-              <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-          </form>           
-        </div>       
-      </div>      
+      </div>
+      <ul class="nav nav-tabs mt-1" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button">
+            Blog input form
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button">
+            Blog modification form and list
+          </button>
+        </li>                
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active mt-5" id="home-tab-pane">
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <form ref='uploadForm' id='uploadForm' method = "post" action="/forms" enctype="multipart/form-data" name = "save">
+                <div class="mb-3">
+                    <label for="input" class="form-label">Name blog</label>
+                    <input type="text" class="form-control" id="input" placeholder="input text" name="input">
+                </div>
+                <div class="mb-3">
+                    <label for="textarea" class="form-label">Text for blog</Textarea></label>
+                    <textarea class="form-control" id="textarea" rows="3" name="text"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="file" class="form-label"></label>
+                    <input class="form-control" type="file" id="file" name="file">
+                </div>
+                <div class="float-end">
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+              </form>           
+            </div>       
+          </div>
+        </div>
+        <div class="tab-pane fade mt-5" id="profile-tab-pane">          
+          <div class="row justify-content-center">
+            <div class="col-9"> 
+              <% let obj = JSON.parse(blogs) %>                           
+              <% for ( let key in obj) { %>
+                <% obj[key].media = obj[key].media.replace(/\/var\/www\/wlbx\/public\/uploads\//g, '') %>
+                <div class="card mt-1 mb-1">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= obj[key].name %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= new Date(Date.parse(obj[key].createdAt)).toUTCString() %></h6>
+                    <p class="card-text text-truncate"><%= obj[key].message %></p>
+                    <a href="/public/uploads/<%= obj[key].media %>" class="card-link"><%= obj[key].media %></a>                    
+                  </div>
+                </div> 
+              <% } %>                 
+            </div>       
+          </div>
+        </div>                
+      </div>           
     </div>    
   </body>
 </html> 
